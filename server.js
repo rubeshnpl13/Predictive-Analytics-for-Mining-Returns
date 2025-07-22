@@ -18,8 +18,11 @@ class Block {
 const fetchData = async () => {
   try {
     const listOfBlocks = [];
-    for (let blockNumber = 17469523; blockNumber < 17469527; blockNumber++) {
+    const startBlock = 18999600;
+    const endBlock = 19000000;
+    for (let blockNumber = startBlock; blockNumber < endBlock; blockNumber++) {
       const apiUrl = `https://api.etherscan.io/v2/api?chainid=1&module=block&action=getblockreward&blockno=${blockNumber}&apikey=${apiKey}`;
+      //   const apiUrl = `https://api.etherscan.io/api?module=block&action=getblockreward&blockno=${blockNumber}&apikey=${apiKey}`;
 
       const response = await axios.get(apiUrl);
       const rewardEther = utils.formatEther(response.data.result.blockReward);
